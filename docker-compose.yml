@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  mongodb:
+    image: mongo
+    networks:
+      - mongo-mymovies
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  mymovies:
+    build:
+      context: mymovies
+    depends_on:
+      - mongodb
+    networks:
+      - mongo-mymovies
+    ports:
+      - "3000:3000"
+
+volumes:
+  mongodb_data:
+
+networks:
+  mongo-mymovies:
