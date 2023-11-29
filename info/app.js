@@ -2,7 +2,7 @@ const express = require("express");
 const axios = require("axios");
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.get("/movie-info/:movieId", async (req, res) => {
   const tmdbApiKey = "157e8cdf37760ddcb6b7139dced48f72";

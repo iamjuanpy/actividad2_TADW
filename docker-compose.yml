@@ -17,11 +17,24 @@ services:
       - mongodb
     networks:
       - mongo-mymovies
+      - mymovies-random
     ports:
       - "3000:3000"
+
+  info:
+    build:
+      context: info
+    depends_on:
+      - mongodb
+    networks:
+      - info-random
+    ports:
+      - "3001:3001"
 
 volumes:
   mongodb_data:
 
 networks:
   mongo-mymovies:
+  info-random:
+  mymovies-random:
