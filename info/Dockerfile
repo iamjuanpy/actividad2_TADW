@@ -1,6 +1,6 @@
-FROM node:14
+FROM node:latest
 
-WORKDIR /info
+WORKDIR /
 
 COPY package*.json ./
 
@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["npm start"]
+CMD ["npm", "start"]
