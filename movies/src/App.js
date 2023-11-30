@@ -6,13 +6,15 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import { Container, Spinner } from 'react-bootstrap';
+import axios from 'axios';
 
 function App() {
+
   const [movies, setMovies] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
 
   const getMovies = async () => {
-    const response = await fetch('https://swapi.dev/api/films');
+    const response = await axios.get(`http://random:3002/random`);
     const data = await response.json();
     setMovies(data.results);
     setLoaded(true);
@@ -34,17 +36,17 @@ function App() {
             <Row xs={1} md={5} className='g-5'>
               {movies.map((movie) => (
                 <Col>
-                  <Card key={movie.episode_id}>
-                    <Card.Img variant="top" src="holder.js/100px160" />
+                  <Card key={movie.title}>
+                    <Card.Img variant="top" src={movie.poster_path} />
                     <Card.Body>
                       <Card.Title>{movie.title}</Card.Title>
-                      <Card.Text>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</Card.Text>
+                      <Card.Text>{movie.overview}</Card.Text>
                     </Card.Body>
                   </Card>
                 </Col>
               ))}
             </Row>
-        </Container>
+          </Container>
         )}
 
         <Button variant="outline-light" onClick={getMovies}>Get Movies</Button>
