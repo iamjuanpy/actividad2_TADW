@@ -7,8 +7,6 @@ services:
       - mongo-mymovies
     ports:
       - "27017:27017"
-    volumes:
-      - ./data:/data/db
 
   data:
     build: ./data
