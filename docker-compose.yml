@@ -31,6 +31,18 @@ services:
     ports:
       - "3001:3001"
 
+  random:
+    build:
+      context: random
+    depends_on:
+      - info
+      - mymovies
+    networks:
+      - info-random
+      - mymovies-random
+    ports:
+      - "3002:3002"
+
 networks:
   mongo-mymovies:
   info-random:
