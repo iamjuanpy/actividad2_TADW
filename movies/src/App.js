@@ -12,6 +12,7 @@ function App() {
   const [isLoaded, setLoaded] = useState(false);
 
   const getMovies = async () => {
+    setLoaded(false);
     const response = await axios.get(`http://localhost:3002/random`);
     const data = response.data;
     setMovies(data);
@@ -50,12 +51,11 @@ function App() {
                 </Col>
               ))}
             </Row>
+            <Button variant="outline-light" onClick={getMovies}>
+              Get Movies
+            </Button>
           </Container>
         )}
-
-        <Button variant="outline-light" onClick={getMovies}>
-          Get Movies
-        </Button>
       </header>
     </div>
   );
